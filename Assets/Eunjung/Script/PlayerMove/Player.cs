@@ -2,6 +2,7 @@ using Codice.CM.Common;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Eunjung
 {
@@ -10,11 +11,12 @@ namespace Eunjung
         public float moveSpeed;
         Vector3 look;
         public float jumpPower;
-        Rigidbody rigid;
-        bool isGround = true;
+        Rigidbody rigid; 
         public GameManager gameManager;
-        public int HP = 5;
+        public int currentHP = 5;
+        public int maxHP = 5;
         bool canJump = true;
+        public Slider HPSilder;
 
         private void Awake()
         {
@@ -39,6 +41,7 @@ namespace Eunjung
                 if (Input.GetKeyDown(KeyCode.Space) && canJump == true)
                 {
                     rigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+                    canJump = false;
                 }
             }
         }
@@ -47,8 +50,8 @@ namespace Eunjung
         {
             if (other.CompareTag("Death"))
             {
-                HP--;
-                if (HP <= 0)
+                currentHP--;
+                if (currentHP <= 0)
                 {
                     gameManager.GameOver();
                 }
@@ -59,11 +62,15 @@ namespace Eunjung
             }
             if (other.CompareTag("Snake"))
             {
-                HP--;
-                if (HP <= 0)
+                currentHP--;
+                if (currentHP <= 0)
                 {
                     gameManager.GameOver();
                 }
+            }
+            if (other.CompareTag("Ground"))
+            {
+                canJump = true;
             }
         }
 
