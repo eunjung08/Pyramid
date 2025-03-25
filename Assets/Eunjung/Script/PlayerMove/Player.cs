@@ -1,6 +1,7 @@
 using Codice.CM.Common;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Plastic.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,7 @@ namespace Eunjung
         public int maxHP = 5;
         bool canJump = true;
         public Slider HPSilder;
+        public Transform spawn;
 
         private void Awake()
         {
@@ -50,7 +52,9 @@ namespace Eunjung
         {
             if (other.CompareTag("Death"))
             {
+                canJump = true;
                 currentHP--;
+                this.transform.position = spawn.position;
                 if (currentHP <= 0)
                 {
                     gameManager.GameOver();

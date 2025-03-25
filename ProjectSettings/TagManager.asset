@@ -11,6 +11,8 @@ TagManager:
   - Wall_R
   - Wall_L
   - Snake
+  - Turn
+  - Item
   layers:
   - Default
   - TransparentFX
