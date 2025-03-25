@@ -8,6 +8,8 @@ namespace Eunjung
     public class GameManager : MonoBehaviour
     {
         public static GameManager instance;
+        public GameObject itemprefab;
+        public Transform itemPosition;
 
         private void Awake()
         {
@@ -19,11 +21,13 @@ namespace Eunjung
             {
                 Destroy(gameObject);
             }
+
+            Instantiate(itemprefab, itemPosition);
         }
         
         public void GameOver()
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("Lobby");
         }
 
         public void stage1Clear()

@@ -13,6 +13,7 @@ namespace Eunjung
         public Slider OxSlider;
 
         public Player player;
+        public GameManager gameManager;
 
         private void Awake()
         {
@@ -44,13 +45,14 @@ namespace Eunjung
         }
         IEnumerator Timer()
         {
-            OxSlider.value -= 1 / 60f;
-            yield return new WaitForSeconds(1f);
+            OxSlider.value -= 1 / 180f;
             if (OxSlider.value <= 0)
             {
                 OxSlider.value = 0;
+                gameManager.GameOver();
                 yield return null;
             }
+            yield return new WaitForSeconds(1f);
             StartCoroutine(Timer());
         }
     }

@@ -21,6 +21,7 @@ namespace Eunjung
             Vector3 smoothPos = Vector3.Lerp(transform.position, pos, smoothSpeed);
             this.transform.position = smoothPos;
             this.transform.LookAt(target);
+
         }
     }
 }
