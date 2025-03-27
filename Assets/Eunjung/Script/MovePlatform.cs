@@ -13,19 +13,19 @@ namespace Eunjung
             float h = Input.GetAxis("Horizontal");
             float v = Input.GetAxis("Vertical");
 
-            this.transform.Translate(Vector3.forward * moveSpeed_b * Time.deltaTime);
+            this.transform.Translate(Vector3.right * moveSpeed_b * Time.deltaTime);
 
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Death"))
+            if (other.CompareTag("Wall_R"))
             {
-                this.transform.rotation = Quaternion.Euler(-90, 0, 0);
+                this.transform.rotation = Quaternion.Euler(0, 90, 0);
             }
             if (other.CompareTag("Turn"))
             {
-                this.transform.rotation = Quaternion.Euler(90, 0, 0);
+                this.transform.rotation = Quaternion.Euler(0, -90, 0);
             }
         }
     }

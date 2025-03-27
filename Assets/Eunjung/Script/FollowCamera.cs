@@ -10,9 +10,12 @@ namespace Eunjung
         public float smoothSpeed = 0.125f;
         public Vector3 offset;
 
+        public GameObject player;
+
         private void Awake()
         {
             target = GameObject.Find("Target").transform;
+            //player = GameObject.Find("Player");
         }
 
         private void LateUpdate()
